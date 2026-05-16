@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Family Trip to Hokkaido 2026</title>
+    <title>Japan Central Alpine Trip 2026</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     
     <script>
@@ -16,12 +14,12 @@
             theme: {
                 extend: {
                     colors: {
-                        'snow-white': '#F0FFFF',        // 雪白色/極淺藍
-                        'ice-blue': '#B3E5FC',          // 冰川藍
-                        'light-snow-blue': '#E5F3F7',   // 整個頁面柔和淺藍底色
-                        'deep-sea-blue': '#01579B',     // 深海藍 (文字/強調)
-                        'accent-yellow': '#FFD54F',     // 溫暖黃 (按鈕/點綴)
-                        'soft-gray': '#F5F5F5'          // 背景灰
+                        'snow-bg': '#E6F2F7',           // 延伸自圖片底色的日系冰雪淡藍
+                        'ice-blue': '#A9D4E9',          // 冰川藍
+                        'mint-glacier': '#D4EBF6',      // 柔和極淺藍
+                        'deep-alpine': '#1E456E',       // 深阿爾卑斯藍 (文字與強調)
+                        'accent-soft-gold': '#E6B85C',  // 日系霧金 (點綴)
+                        'slate-soft': '#F8FAFC'         // 卡片與淺色背景
                     }
                 }
             }
@@ -29,12 +27,115 @@
     </script>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Sawarabi+Gothic&display=swap');
+        
         body {
-            background-color: #E5F3F7; 
+            background-color: #E6F2F7; 
             -webkit-tap-highlight-color: transparent;
-            font-family: 'Noto Sans TC', sans-serif;
-            color: #334155;
+            font-family: 'Noto Sans TC', 'Sawarabi Gothic', sans-serif;
+            color: #2C3E50;
+        }
+
+        .app-container {
+            max-width: 480px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background-color: #F4F9FC; 
+            box-shadow: 0 0 40px rgba(30, 69, 110, 0.08);
+            position: relative;
+            padding-bottom: 90px;
+        }
+
+        /* 頁首滿版 Banner 容器 */
+        .header-bg {
+            background-color: #ffffff; 
+            padding: 0; 
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 32px; 
+            border-bottom-right-radius: 32px;
+            z-index: 10; 
+            box-shadow: 0 4px 20px rgba(30, 69, 110, 0.1);
+        }
+        
+        .header-image-container {
+            width: 100%;
+            height: 250px; 
+            overflow: hidden;
+        }
+        
+        .header-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            display: block; 
+        }
+
+        /* 輕透日系雪花濾鏡 */
+        .snow-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="30" r="1.5" fill="%23fff" opacity="0.6"/><circle cx="20" cy="70" r="1" fill="%23fff" opacity="0.4"/><circle cx="80" cy="60" r="2" fill="%23fff" opacity="0.5"/></svg>');
+            background-size: 120px 120px;
+            opacity: 0.5;
+            animation: snowfall 15s linear infinite;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        @keyframes snowfall {
+            to { background-position: 120px 120px; }
+        }
+        
+        /* 浮動導覽列 (Tab 圓鈕) */
+        .side-tab-bar {
+            position: absolute;
+            bottom: 25px; 
+            right: 18px;
+            z-index: 30; 
+            display: flex;
+            flex-direction: row;
+            gap: 10px; 
+            background: rgba(255, 255, 255, 0.75);
+            padding: 6px;
+            border-radius: 9999px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .tab-button {
+            width: 42px; 
+            height: 42px;
+            border-radius: 9999px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem; 
+            transition: all 0.25s ease;
+        }
+        
+        .tab-button.active {
+            background-color: #1E456E; 
+            color: #ffffff;
+            transform: scale(1.08);
+            box-shadow: 0 4px 12px rgba(30, 69, 110, 0.3);
+        }
+        
+        .tab-button:not(.active) {
+            color: #A9D4E9;
+        }
+
+        /* 圓弧負邊距主內容重疊區 */
+        .app-main {
+            margin-top: -20px;
+            position: relative;
+            z-index: 20;
+            border-top-left-radius: 28px;
+            border-top-right-radius: 28px;
+            background-color:            color: #334155;
         }
 
         .app-container {
